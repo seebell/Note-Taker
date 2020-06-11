@@ -39,4 +39,10 @@ app.post("/api/notes", async function (req, res) {
             res.json(req.body);
         })
         .catch(err => console.log(err))
-})
+});
+
+app.get("/api/notes", async (req, res) => {
+   let file = await fs.readFile("./db/db.json", "utf8")
+   console.log(file)
+   res.json(JSON.parse(file));
+});
