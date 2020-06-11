@@ -65,3 +65,7 @@ app.delete("/api/notes/:id", async function (req, res) {
         })
     console.log("The note has been written to db.json")
 });
+
+app.listen(PORT, () => {
+    console.log("App listening on PORT " + PORT);
+});
