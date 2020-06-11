@@ -46,3 +46,22 @@ app.get("/api/notes", async (req, res) => {
    console.log(file)
    res.json(JSON.parse(file));
 });
+
+app.delete("/api/notes/:id", async function (req, res) {
+    const { params } = req;
+    let { id } = params;
+    id = JSON.parse(id)
+    console.log(params, id);
+    let file = await fs.readFile("./db/db.json", "utf8")
+
+    console.log('File -------------')
+    console.log(file)
+    var newStoreNotes = JSON.parse(file).filter((item) => item.id !== id);
+
+    console.log(newStoreNotes)
+    fs.writeFile("./db/db.json", JSON.stringify(newStoreNotes))
+        .then(() => {
+            res.json(newStoreNotes);
+        })
+    console.log("The note has been written to db.json")
+});
