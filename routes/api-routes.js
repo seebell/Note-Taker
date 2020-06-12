@@ -1,7 +1,6 @@
 const path = require('path');
 const fs = require('fs');
 
-
 const readData = () => {
 
     const noteData = JSON.parse(fs.readFileSync(path.join(__dirname, '../db/db.json')))
@@ -13,7 +12,6 @@ const writeData = (noteData) => {
         if (err) return ({ err });
     })
 }
-
 
 module.exports = function (app) {
 
